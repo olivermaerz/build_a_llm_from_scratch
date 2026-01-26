@@ -1,4 +1,4 @@
-# Build a Large Language Model from Scratch code-along
+# Build a Large Language Model from Scratch (code-along)
 Personal code-along and exercises from the book "Build a Large Language Model (from Scratch)" by Sebastian Raschka.
 
 ## Licensing
