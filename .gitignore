@@ -35,3 +35,6 @@ env/
 dist/
 build/
 *.egg-info/
+
+model.pth
+/gpt2/

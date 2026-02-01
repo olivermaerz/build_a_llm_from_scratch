@@ -68,17 +68,18 @@ class TransformerBlock(nn.Module):
     self.drop_shortcut = nn.Dropout(cfg["drop_rate"])
 
   def forward(self, x):
+    # GPT-2 order: attention first (norm1 -> attn -> residual), then FFN (norm2 -> ff -> residual)
     shortcut = x
     x = self.norm1(x)
-    x = self.ff(x)
+    x = self.attn(x)
     x = self.drop_shortcut(x)
     x = x + shortcut
 
-    shortcut = x # keep the x from the previous layer for the shortcut connection
+    shortcut = x
     x = self.norm2(x)
-    x = self.attn(x)
+    x = self.ff(x)
     x = self.drop_shortcut(x)
-    x = x + shortcut # add the shortcut connection
+    x = x + shortcut
 
     return x
 
